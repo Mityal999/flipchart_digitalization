@@ -30,7 +30,7 @@ def replace_text_with_rectangles(image_path, corner_radius=0.6):
     
     return image, coords_list
 
-def recognize_and_generate_xml(image, coords_list, name, xml_output_folder):
+def recognize_and_generate_xml(image, coords_list, name, xml_output_folder, font_size=20):
     # Распознавание текста и генерация XML-файла для draw.io
     recognized_text = []
     for coords in coords_list:
@@ -56,7 +56,7 @@ def recognize_and_generate_xml(image, coords_list, name, xml_output_folder):
         width = x2 - x1
         height = y2 - y1
 
-        xml_content += f'        <mxCell id="cell{cell_id}" value="{text}" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">\n'
+        xml_content += f'        <mxCell id="cell{cell_id}" value="{text}" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize={font_size};" vertex="1" parent="1">\n'
         xml_content += f'          <mxGeometry x="{x1}" y="{y1}" width="{width}" height="{height}" as="geometry" />\n'
         xml_content += '        </mxCell>\n'
         cell_id += 1
